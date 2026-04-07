@@ -19,9 +19,19 @@ def rutas():
     ruta_rece.mkdir(exist_ok=True)
     return ruta_rece
 
+def crear_categoria(rutas):
+    with st.form("crear_categoria_form"):
+        nueva_categoria = st.text_input("Nombre de la nueva categoria: ")
+        submitted = st.form_submit_button("Crear categoria")
 
-usuario While Trueewhile:
-
+        if submitted and nueva_categoria:
+            cate_nue = rutas/ nueva_categoria
+            cate_nue.mkdir(exist_ok=True)
+            st.success(f"¡Categoria '{nueva_categoria}' creada con éxito!")
+            return cate_nue
+        elif submitted:
+            st.warning("Por favor, ingresa un nombre para la categoria")
+    return None
 
 def crear_receta(ruta_categoria):
     """Crea una nueva receta en la categoría seleccionada"""
